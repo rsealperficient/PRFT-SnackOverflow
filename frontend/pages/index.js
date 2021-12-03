@@ -1,19 +1,23 @@
-import {
-  Heading
-} from '@chakra-ui/react'
-export default function Index({ allPosts, preview }) {
-  // const heroPost = allPosts[0]
-  // const morePosts = allPosts.slice(1)
+import PageLayout from "@/components/page-layout"
+import { Box, Container, Grid, Heading } from "@chakra-ui/react"
+
+function HomePage() {
   return (
-    <>
-      <Heading>Lorem  </Heading>
-    </>
+    <PageLayout>
+      <Container maxW={"container.xl"}>
+        <Box p={4}>
+          <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+            <Heading>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
+              cumque debitis dicta dignissimos eum exercitationem iusto magni
+              natus porro possimus quam quibusdam quis quisquam quod quos
+              reiciendis, repellat unde velit.
+            </Heading>
+          </Grid>
+        </Box>
+      </Container>
+    </PageLayout>
   )
 }
 
-// export async function getStaticProps({ preview = null }) {
-//   const allPosts = (await getAllPostsForHome(preview)) || []
-//   return {
-//     props: { allPosts, preview },
-//   }
-// }
+export default HomePage

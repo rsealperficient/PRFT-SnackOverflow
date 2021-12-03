@@ -1,12 +1,8 @@
-import Link from 'next/link'
+import React from "react"
+import { Box } from "@chakra-ui/react"
 
-export default function Header() {
-  return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
-      </Link>
-      .
-    </h2>
-  )
+function Header(props) {
+  return <Box>Header</Box>
 }
+
+export default Header
