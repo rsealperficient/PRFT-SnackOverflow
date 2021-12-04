@@ -1,7 +1,7 @@
 export function getStrapiURL(path) {
   return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-  }${path}`
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337/"
+  }/api${path}`
 }
 
 export async function fetchAPI(path) {
@@ -13,7 +13,7 @@ export async function fetchAPI(path) {
 
 export async function getProducts() {
   const products = await fetchAPI("/products")
-  return products
+  return products.data
 }
 
 export async function getProduct(slug) {
