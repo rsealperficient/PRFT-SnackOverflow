@@ -61,13 +61,10 @@ function AddProductPage({ products }) {
         isClosable: true,
       })
 
-      console.log("error")
     } else {
       const product = await res.json()
       router.push(`/product/${product.slug}`)
-      console.log("success")
     }
-    console.log(values)
   }
 
   const handleInputChange = (e) => {

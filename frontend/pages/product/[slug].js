@@ -1,3 +1,4 @@
+import React from "react"
 import {
   SimpleGrid,
   Box,
@@ -12,6 +13,7 @@ import {
   Text,
   VStack,
   List,
+  Link,
   ListItem,
   Divider,
   NumberInput,
@@ -21,14 +23,47 @@ import {
   NumberDecrementStepper,
   HStack,
   Img,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react"
+import { API_URL } from "@/config/index"
+
 import Image from "next/image"
 import PageLayout from "@/components/page-layout"
 import { getProducts, getProduct } from "@/utils/api"
 import { useRouter } from "next/router"
+import NextLink from "next/link"
 function ProductSingle({ product }) {
   const router = useRouter()
+  const toast = useToast()
+
+  const [isOpen, setIsOpen] = React.useState(false)
+  const onClose = () => setIsOpen(false)
+  const cancelRef = React.useRef()
+
+  const deleteProduct = async (e) => {
+    const res = await fetch(`${API_URL}/products/${product.id}`, {
+      method: "DELETE",
+    })
+
+    const data = await res.json()
+    if (!res.ok) {
+      toast({
+        title: data.message,
+        status: "warning",
+        position: "top",
+        isClosable: true,
+      })
+    } else {
+      router.push("/product")
+    }
+  }
   if (router.isFallback) {
     return <div>Loading product...</div>
   }
@@ -38,13 +73,6 @@ function ProductSingle({ product }) {
       <Container maxW={"container.xl"}>
         <Grid templateColumns="repeat(3, 1fr)" gap={4}>
           <GridItem colSpan={1}>
-            {/*<Image*/}
-            {/*  // loader={myLoader}*/}
-            {/*  src="https://picsum.photos/200/300"*/}
-            {/*  alt="Picture of the author"*/}
-            {/*  width={500}*/}
-            {/*  height={500}*/}
-            {/*/>*/}
             <Img
               rounded={"lg"}
               // boxSize="250px"
@@ -145,6 +173,39 @@ function ProductSingle({ product }) {
             {/*</VStack>*/}
           </GridItem>
         </Grid>
+        <Box>
+          <NextLink href={`/product/edit/${product.id}`}>Edit Event</NextLink>
+          <Link href="#" onClick={() => setIsOpen(true)}>
+            Delete Event
+          </Link>
+        </Box>
+
+        <AlertDialog
+          isOpen={isOpen}
+          leastDestructiveRef={cancelRef}
+          onClose={onClose}
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                Delete Product
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                Are you sure? You can't undo this action afterwards.
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button ref={cancelRef} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button colorScheme="red" onClick={deleteProduct} ml={3}>
+                  Delete
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
       </Container>
     </PageLayout>
   )
@@ -159,10 +220,8 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const products = await getProducts()
-  console.log(products)
   return {
     paths: products.map((_product) => {
-      console.log(_product.slug)
       return {
         params: { slug: _product.slug },
       }

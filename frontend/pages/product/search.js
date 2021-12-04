@@ -27,8 +27,6 @@ import { useRouter } from "next/router"
 import { API_URL } from "@/config/index"
 
 function ProductSearchPage({ products }) {
-
-
   const router = useRouter()
   if (router.isFallback) {
     return <div>Loading product...</div>
@@ -44,7 +42,6 @@ function ProductSearchPage({ products }) {
     </PageLayout>
   )
 }
-
 
 export default ProductSearchPage
 
@@ -65,13 +62,10 @@ export async function getServerSideProps({ query: { term } }) {
         { rarity_contains: term },
       ],
     },
-  });
+  })
 
-
-  console.log(query)
   const res = await fetch(`${API_URL}/products?${query}`)
   const products = await res.json()
-  console.log(products)
 
   return {
     props: { products },
