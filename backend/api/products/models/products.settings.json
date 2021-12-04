@@ -31,11 +31,28 @@
       "via": "product",
       "collection": "listing"
     },
-    "Rarity": {
+    "rarity": {
       "type": "enumeration",
       "enum": [
         "Common",
         "Rare"
+      ]
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "set": {
+      "type": "enumeration",
+      "enum": [
+        "Kaldheim",
+        "Vow"
       ]
     }
   }
