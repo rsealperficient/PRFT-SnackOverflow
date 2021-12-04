@@ -19,17 +19,7 @@ function HomePage({ products }) {
           </GridItem>
         </Grid>
 
-        <Box>Filter</Box>
-        <Grid templateColumns="repeat(5, 1fr)" gap={4}>
-          <GridItem colSpan={1} bg="tomato">
-            Filter
-          </GridItem>
-          <GridItem colSpan={4} bg="papayawhip">
-            <ProductsList products={products} />
 
-            <Box>Pagination</Box>
-          </GridItem>
-        </Grid>
       </Container>
     </PageLayout>
   )
