@@ -22,11 +22,13 @@ function ProductsList({ products }) {
               <div className="w-full bg-white">
                 <div className="rounded-t-lg pt-2 pb-2 w-1/2 mx-auto">
                   <Image
-                    // loader={myLoader}
-                    src="https://picsum.photos/200/300"
-                    alt="Picture of the author"
+                    src={
+                      _product.image
+                        ? _product.image.formats.small.url
+                        : "/images/black-lotus.jpg"
+                    }
                     width={200}
-                    height={150}
+                    height={270}
                   />
                 </div>
               </div>
