@@ -20,11 +20,10 @@ function PageLayout({ title, description, children }) {
       {router.pathname === "/" && <Hero />}
       <div>{children}</div>
       <Footer />
-        <div
-            hidden
-            id="snipcart"
-            data-api-key="ODhhNWUxOGEtNTk0OC00OTQwLWJkOWMtM2M1ZmNjODU1ZDJhNjM3MzMyNzM0NjM1OTMyNjcz"
-        />
+        <div id="snipcart" data-config-modal-style="side" data-api-key="OTAyMWZlNGQtZmQwNy00MTI0LWIyNzAtMGYxYzA0YWEyMGMwNjM3NzQyMzQ5OTQ3NDYwNzkx"
+             data-config-add-product-behavior="none"
+             hidden></div>
+
     </>
   )
 }

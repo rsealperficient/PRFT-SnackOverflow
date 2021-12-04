@@ -9,8 +9,8 @@ import {
 function Footer(props) {
   return (
     <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
+      bg={useColorModeValue("blue.800", "gray.900")}
+      color={useColorModeValue("gray.100", "gray.200")}
     >
       <Container
         as={Stack}

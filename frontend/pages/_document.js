@@ -8,14 +8,16 @@ export default class MyDocument extends Document {
           <Head>
               <link rel="preconnect" href="https://app.snipcart.com" />
               <link rel="preconnect" href="https://cdn.snipcart.com" />
+              <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+
+
               <link
+                  href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=optional"
                   rel="stylesheet"
-                  href="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.css"
               />
-              <script
-                  async
-                  src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js"
-              />
+
+              <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+
           </Head>
 
         <body>

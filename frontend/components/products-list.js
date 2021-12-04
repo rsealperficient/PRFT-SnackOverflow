@@ -24,7 +24,7 @@ function ProductsList({ products }) {
                   <Image
                     src={
                       _product.image
-                        ? _product.image.formats.small.url
+                        ? _product.image.formats.thumbnail.url
                         : "/images/black-lotus.jpg"
                     }
                     width={200}
