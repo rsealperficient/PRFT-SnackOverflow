@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listings",
+  "info": {
+    "name": "Listing",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "product": {
+      "via": "listings",
+      "model": "products"
+    },
+    "Price": {
+      "type": "biginteger"
+    }
+  }
+}
