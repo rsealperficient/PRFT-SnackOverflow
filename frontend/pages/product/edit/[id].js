@@ -1,4 +1,5 @@
 import PageLayout from "@/components/page-layout"
+import EditImage from "@/components/edit-image"
 import React, { useState } from "react"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
@@ -35,6 +36,14 @@ import {
   AlertDialogOverlay,
   useColorModeValue,
   useToast,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
   FormControl,
   FormLabel,
   Input,
@@ -44,15 +53,23 @@ import {
 function EditProductPage({ product }) {
   const toast = useToast()
   const router = useRouter()
-  const [imagePreview, setimagePreview] = useState(
+  const [imagePreview, setImagePreview] = useState(
     product.image ? product.image.formats.thumbnail.url : null
   )
+  const [showImageModal, setShowImageModal] = useState(false)
   const [values, setValues] = useState({
     name: product.name,
     description: product.description,
     price: product.price,
   })
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const imageUploaded = async (e) => {
+    const res = await fetch(`${API_URL}/products/${product.id}`)
+    const data = await res.json()
+    setImagePreview(data.image.formats.thumbnail.url)
+    onClose()
+  }
   const handleSubmit = async (e) => {
     e.preventDefault()
     const hasEmptyFields = Object.values(values).some(
@@ -116,7 +133,7 @@ function EditProductPage({ product }) {
             )}
 
             <div>
-              <Button>Set Image</Button>
+              <Button onClick={onOpen}>Set Image</Button>
             </div>
           </Box>
 
@@ -167,6 +184,22 @@ function EditProductPage({ product }) {
               Update Product
             </Button>
           </form>
+
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Upload Image</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+
+                <EditImage
+                  productId={product.id}
+                  imageUploaded={imageUploaded}
+                />
+              </ModalBody>
+
+            </ModalContent>
+          </Modal>
         </SimpleGrid>
       </Container>
     </PageLayout>

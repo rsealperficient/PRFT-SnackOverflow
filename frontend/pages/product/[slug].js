@@ -174,9 +174,9 @@ function ProductSingle({ product }) {
           </GridItem>
         </Grid>
         <Box>
-          <NextLink href={`/product/edit/${product.id}`}>Edit Event</NextLink>
+          <NextLink href={`/product/edit/${product.id}`}>Edit Product</NextLink>
           <Link href="#" onClick={() => setIsOpen(true)}>
-            Delete Event
+            Delete Product
           </Link>
         </Box>
 
