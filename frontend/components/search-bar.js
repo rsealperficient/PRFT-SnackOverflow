@@ -10,7 +10,7 @@ function SearchBar(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    router.push(`/products/search?term=${term}`)
+    router.push(`/product/search?term=${term}`)
     setTerm("")
   }
 

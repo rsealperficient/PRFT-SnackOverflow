@@ -17,7 +17,7 @@ function ProductsList({ products }) {
     <Grid templateColumns="repeat(5, 1fr)" gap={6}>
       {products.map((_product) => (
         <Box key={_product.id}>
-          <NextLink href={`/products/${_product.slug}`}>
+          <NextLink href={`/product/${_product.slug}`}>
             <a>
               <div className="w-full bg-white">
                 <div className="rounded-t-lg pt-2 pb-2 w-1/2 mx-auto">
