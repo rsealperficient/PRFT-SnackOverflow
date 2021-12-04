@@ -60,40 +60,33 @@ function Header(props) {
               <>
                 <NextLink href={"/account/dashboard"}>
                   <Button
-                    colorScheme={"green"}
-                    bg={"green.400"}
+                    colorScheme={"blue"}
+                    // bg={"blue.400"}
                     px={6}
-                    _hover={{
-                      bg: "green.500",
-                    }}
+                    variant={"outline"}
+                    // _hover={{
+                    //   bg: "green.500",
+                    // }}
                   >
                     My Account
                   </Button>
                 </NextLink>
 
                 <Button
-                  colorScheme={"green"}
-                  bg={"green.400"}
+                  colorScheme={"blue"}
+                  // bg={"blue.400"}
                   px={6}
-                  _hover={{
-                    bg: "green.500",
-                  }}
+                  variant={"outline"}
+                  // _hover={{
+                  //   bg: "green.500",
+                  // }}
                   onClick={() => logoutUser()}
                 >
                   Log out
                 </Button>
               </>
             ) : (
-              <NextLink href={"/account/login"}>
-                <Button
-                  colorScheme={"blue"}
-                  // bg={"green.400"}
-                  variant={"outline"}
-                  px={6}
-                >
-                  Log in
-                </Button>
-              </NextLink>
+              <NextLink href={"/account/login"}>Log in</NextLink>
             )}
             <Button
               colorScheme={"blue"}
