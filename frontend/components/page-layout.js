@@ -4,7 +4,7 @@ import Head from "next/head"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import Hero from "@/components/hero"
-
+import { Box } from "@chakra-ui/react"
 function PageLayout({ title, description, children }) {
   const router = useRouter()
 
@@ -18,16 +18,15 @@ function PageLayout({ title, description, children }) {
 
       <Header />
       {router.pathname === "/" && <Hero />}
-      <div>{children}</div>
+      <Box bg={'gray.100'}>{children}</Box>
       <Footer />
 
-        <div
-          id="snipcart"
-          data-config-modal-style="side"
-          data-api-key="OTAyMWZlNGQtZmQwNy00MTI0LWIyNzAtMGYxYzA0YWEyMGMwNjM3NzQyMzQ5OTQ3NDYwNzkx"
-          data-config-add-product-behavior="none"
-        ></div>
-
+      <div
+        id="snipcart"
+        data-config-modal-style="side"
+        data-api-key="OTAyMWZlNGQtZmQwNy00MTI0LWIyNzAtMGYxYzA0YWEyMGMwNjM3NzQyMzQ5OTQ3NDYwNzkx"
+        data-config-add-product-behavior="none"
+      ></div>
     </>
   )
 }

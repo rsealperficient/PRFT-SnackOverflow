@@ -22,15 +22,51 @@ import {
   Textarea,
 } from "@chakra-ui/react"
 function AddProductPage({ products }) {
+  const toast = useToast()
   const [values, setValues] = useState({
     name: "",
-
     description: "",
+    price: "",
   })
 
   const router = useRouter()
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const hasEmptyFields = Object.values(values).some(
+      (element) => element === ""
+    )
+    if (hasEmptyFields) {
+      toast({
+        title: "Fill all required fields",
+        status: "warning",
+        position: "top",
+        isClosable: true,
+      })
+    }
+
+    const res = await fetch(`${API_URL}/products`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+
+    if (!res.ok) {
+      toast({
+        title: "Error",
+        status: "warning",
+        position: "top",
+        isClosable: true,
+      })
+
+      console.log("error")
+    } else {
+      const product = await res.json()
+      router.push(`/product/${product.slug}`)
+      console.log("success")
+    }
     console.log(values)
   }
 
@@ -44,7 +80,7 @@ function AddProductPage({ products }) {
 
   return (
     <PageLayout title="Add Product">
-      <Container maxW={"container.xl"}>
+      <Container maxW={"container.xl"} bg={"white"}>
         <NextLink href={"/product"}>Go Back</NextLink>
 
         <Heading>Add Product</Heading>
@@ -72,7 +108,17 @@ function AddProductPage({ products }) {
               onChange={handleInputChange}
             />
           </FormControl>
-
+          <FormControl id="price" isRequired>
+            <FormLabel>Price</FormLabel>
+            <Input
+              type="price"
+              name="price"
+              id="price"
+              value={values.price}
+              onChange={handleInputChange}
+              errorBorderColor="red.300"
+            />
+          </FormControl>
           <Button
             type="submit"
             loadingText="Submitting"

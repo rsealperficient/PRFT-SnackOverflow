@@ -35,7 +35,9 @@
       "type": "enumeration",
       "enum": [
         "Common",
-        "Rare"
+        "Rare",
+        "Uncommon",
+        "Mythic"
       ]
     },
     "slug": {
@@ -53,6 +55,17 @@
       "enum": [
         "Kaldheim",
         "Vow"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Creature",
+        "Instant",
+        "Sorcery",
+        "Enchantment",
+        "Land",
+        "Artifact"
       ]
     }
   }
