@@ -9,7 +9,7 @@ function PageLayout({ title, description, children }) {
   const router = useRouter()
 
   return (
-    <div>
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -20,7 +20,12 @@ function PageLayout({ title, description, children }) {
       {router.pathname === "/" && <Hero />}
       <div>{children}</div>
       <Footer />
-    </div>
+        <div
+            hidden
+            id="snipcart"
+            data-api-key="ODhhNWUxOGEtNTk0OC00OTQwLWJkOWMtM2M1ZmNjODU1ZDJhNjM3MzMyNzM0NjM1OTMyNjcz"
+        />
+    </>
   )
 }
 
