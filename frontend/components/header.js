@@ -1,4 +1,4 @@
-import { React, ReactNode, useEffect } from "react"
+import { React, ReactNode, useEffect, useContext } from "react"
 import NextLink from "next/link"
 import SearchBar from "@/components/search-bar"
 import {
@@ -27,13 +27,13 @@ import {
   Stack,
   Heading,
 } from "@chakra-ui/react"
+import AuthContext from "@/context/AuthContext"
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons"
 const Links = ["Dashboard", "Projects", "Team"]
-
+import { MdShoppingCart } from "react-icons/md"
 function Header(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // let btnRef;
-
+  const { user, logoutUser } = useContext(AuthContext)
   return (
     <Box bg={useColorModeValue("white", "gray.900")} px={4} py={3}>
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
@@ -52,56 +52,64 @@ function Header(props) {
           </HStack>
         </HStack>
         <Box w="60%">
-          {/*<Input placeholder="Search" size="md" />*/}
-
           <SearchBar />
         </Box>
         <Flex alignItems={"center"}>
-          <NextLink href="/login" passHref>
-            <Button variant={"solid"} colorScheme={"blue"} size={"sm"} mr={4}>
-              Log In
+          <HStack spacing="24px">
+            {user ? (
+              <>
+                <NextLink href={"/account/dashboard"}>
+                  <Button
+                    colorScheme={"green"}
+                    bg={"green.400"}
+                    px={6}
+                    _hover={{
+                      bg: "green.500",
+                    }}
+                  >
+                    My Account
+                  </Button>
+                </NextLink>
+
+                <Button
+                  colorScheme={"green"}
+                  bg={"green.400"}
+                  px={6}
+                  _hover={{
+                    bg: "green.500",
+                  }}
+                  onClick={() => logoutUser()}
+                >
+                  Log out
+                </Button>
+              </>
+            ) : (
+              <NextLink href={"/account/login"}>
+                <Button
+                  colorScheme={"blue"}
+                  // bg={"green.400"}
+                  variant={"outline"}
+                  px={6}
+                >
+                  Log in
+                </Button>
+              </NextLink>
+            )}
+            <Button
+              colorScheme={"blue"}
+              size={"md"}
+              mr={4}
+              className="snipcart-checkout "
+              variant={"solid"}
+              px={6}
+              leftIcon={<MdShoppingCart />}
+            >
+              Cart{" "}
+              <Text ml="2" as="span" className="snipcart-items-count"></Text>
             </Button>
-          </NextLink>
-          <Button
-            variant={"outline"}
-            colorScheme={"blue"}
-            size={"sm"}
-            mr={4}
-            className="snipcart-checkout "
-          >
-            Cart <Text ml="2" as="span" className="snipcart-items-count"></Text>
-          </Button>
+          </HStack>
         </Flex>
       </Flex>
-
-      {isOpen ? (
-        <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
-            <Link href={"#"}>asdf</Link>
-          </Stack>
-        </Box>
-      ) : null}
-
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
-          <DrawerBody>
-            <Input placeholder="Type here..." />
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <NextLink href="/stores/checkout" passHref>
-              <Button colorScheme="blue">Checkout</Button>
-            </NextLink>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
     </Box>
   )
 }
