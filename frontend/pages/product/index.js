@@ -55,7 +55,7 @@ export async function getServerSideProps({ query: { page = 1 } }) {
   const totalRes = await fetch(`${API_URL}/products/count`);
   const total = await totalRes.json();
 
-  // Fetch Events
+  // Fetch Products
   const productsRes = await fetch(
       `${API_URL}/products?_limit=${PAGE_SIZE}&_start=${start}`
   );

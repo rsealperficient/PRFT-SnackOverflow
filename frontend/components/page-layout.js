@@ -21,8 +21,7 @@ function PageLayout({ title, description, children }) {
       <Box bg={'gray.100'}>{children}</Box>
       <Footer />
 
-      <div
-        id="snipcart"
+      <div id="snipcart"
         data-config-modal-style="side"
         data-api-key="OTAyMWZlNGQtZmQwNy00MTI0LWIyNzAtMGYxYzA0YWEyMGMwNjM3NzQyMzQ5OTQ3NDYwNzkx"
         data-config-add-product-behavior="none"
