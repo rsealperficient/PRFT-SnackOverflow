@@ -1,7 +1,7 @@
 import PageLayout from "@/components/page-layout"
 import CategoryRow from "@/components/category-row"
 import { Container, Flex, useColorModeValue } from "@chakra-ui/react"
-import { getCategories, getCategory, getProducts } from "@/utils/api"
+import { getCategories, getProducts } from "@/utils/api"
 import Hero from "@/components/hero"
 
 function HomePage({ products, categories }) {

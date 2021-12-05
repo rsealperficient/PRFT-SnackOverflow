@@ -4,19 +4,11 @@ import NextLink from "next/link"
 import { API_URL } from "@/config/index"
 import PageLayout from "@/components/page-layout"
 import {
-  Box,
   Button,
-  Flex,
   FormControl,
   FormLabel,
   Heading,
   Input,
-  Link,
-  Stack,
-  InputGroup,
-  InputRightElement,
-  Text,
-  useColorModeValue,
   useToast,
   Container,
   Textarea,

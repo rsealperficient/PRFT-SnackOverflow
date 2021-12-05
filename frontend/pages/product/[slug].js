@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react"
+import { getMedia } from "@/utils/get-media"
 import {
   SimpleGrid,
   Box,
@@ -31,17 +32,23 @@ import {
   AlertDialogOverlay,
   useColorModeValue,
   useToast,
+  Center,
+  Spinner,
 } from "@chakra-ui/react"
 import { API_URL } from "@/config/index"
+import { MdKeyboardArrowLeft } from "react-icons/md"
 
 import Image from "next/image"
 import PageLayout from "@/components/page-layout"
 import { getProducts, getProduct } from "@/utils/api"
 import { useRouter } from "next/router"
 import NextLink from "next/link"
+import NextImage from "@/utils/image"
+import AppContext from "@/context/app-context"
 function ProductSingle({ product }) {
   const router = useRouter()
   const toast = useToast()
+  const { user } = useContext(AppContext)
 
   const [isOpen, setIsOpen] = React.useState(false)
   const onClose = () => setIsOpen(false)
@@ -65,147 +72,135 @@ function ProductSingle({ product }) {
     }
   }
   if (router.isFallback) {
-    return <div>Loading product...</div>
+    return (
+      <Center h={"100vh"}>
+        <Spinner size="xl" />
+      </Center>
+    )
   }
 
   return (
     <PageLayout title={product.title}>
-      <Container maxW={"container.xl"}>
-        <Grid templateColumns="repeat(3, 1fr)" gap={4}>
-          <GridItem colSpan={1}>
-            <Img
-              rounded={"lg"}
-              // boxSize="250px"
-              objectFit={"cover"}
-              src={
-                product.image
-                  ? product.image.formats.small.url
-                  : "https://via.placeholder.com/15"
-              }
-            />
-          </GridItem>
-          <GridItem colSpan={2}>
-            <Heading>
-              {product.name} - ${product.price}
-            </Heading>
+      <Container
+        maxW={"container.xl"}
+        py={"8"}
+        minH={"calc(100vh - 88px - 56px)"}
+      >
+        <Container bg={"white"} w={"full"} maxW={"container.xl"} p={"12"}>
+          <Grid templateColumns="repeat(7, 1fr)" gap={8}>
+            <GridItem colSpan={"7"}>
+              <Button
+                onClick={() => router.back()}
+                variant={"link"}
+                size={"small"}
+              >
+                <MdKeyboardArrowLeft /> Back
+              </Button>
+            </GridItem>
+            <GridItem colSpan={3}>
+              <NextImage media={product.image} width="240" height="240" />
+            </GridItem>
+            <GridItem colSpan={4}>
+              <VStack alignItems={"start"} spacing={6}>
+                <HStack justifyContent={"space-between"} w={"full"}>
+                  <Heading>{product.title}</Heading>
+                  <Heading size={"md"} fontWeight={500}>
+                    ${product.price}
+                  </Heading>
+                </HStack>
 
-            <Text>{product.description}</Text>
-            <Divider></Divider>
-            <NumberInput defaultValue={1} min={1} max={1000} width="100px">
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-            <Button
-              colorScheme="green"
-              mt="2"
-              className="snipcart-add-item"
-              data-item-id={product.id}
-              data-item-price={product.price}
-              data-item-url={router.asPath}
-              data-item-description={product.description}
-              data-item-image={
-                product.image
-                  ? product.image.formats.small.url
-                  : "https://via.placeholder.com/15"
-              }
-              data-item-name={product.title}
-              v-bind="customFields"
-            >
-              Add to cart
-            </Button>
+                <Text fontSize="18">{product.description}</Text>
+                <Divider></Divider>
+              </VStack>
 
-            {/*<VStack>*/}
-            {/*  <Flex*/}
-            {/*    bg={useColorModeValue("gray.50", "gray.700")}*/}
-            {/*    py={4}*/}
-            {/*    borderRadius={"xl"}*/}
-            {/*    w={"full"}*/}
-            {/*  >*/}
-            {/*    <Box p="2">*/}
-            {/*      <Heading size="md">Arcade Collectibles</Heading>*/}
-            {/*    </Box>*/}
-            {/*    <Box p="2">*/}
-            {/*      <Heading size="md">$3.00</Heading>*/}
-            {/*    </Box>*/}
-            {/*    <Spacer />*/}
-            {/*    <Box>*/}
-            {/*      <Button colorScheme="teal" mr="4" variant="outline">*/}
-            {/*        Add to Cart*/}
-            {/*      </Button>*/}
-            {/*    </Box>*/}
-            {/*  </Flex>*/}
-            {/*  <Flex*/}
-            {/*    bg={useColorModeValue("gray.50", "gray.700")}*/}
-            {/*    py={4}*/}
-            {/*    borderRadius={"xl"}*/}
-            {/*    w={"full"}*/}
-            {/*  >*/}
-            {/*    <Box p="2">*/}
-            {/*      <Heading size="md">Arcade Collectibles</Heading>*/}
-            {/*    </Box>*/}
-            {/*    <Box p="2">*/}
-            {/*      <Heading size="md">$3.00</Heading>*/}
-            {/*    </Box>*/}
-            {/*    <Spacer />*/}
-            {/*    <Box>*/}
-            {/*      <Button colorScheme="teal" mr="4" variant="outline">*/}
-            {/*        Add to Cart*/}
-            {/*      </Button>*/}
-            {/*      <button*/}
-            {/*          className="snipcart-add-item mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"*/}
-            {/*          data-item-id={product.id}*/}
-            {/*          data-item-price={product.price}*/}
-            {/*          // data-item-url={router.asPath}*/}
-            {/*          // data-item-description={product.description}*/}
-            {/*          // data-item-image={getStrapiMedia(*/}
-            {/*          //     product.image.formats.thumbnail.url*/}
-            {/*          // )}*/}
-            {/*          data-item-name={product.name}*/}
-            {/*          v-bind="customFields"*/}
-            {/*      >*/}
-            {/*        Add to cart*/}
-            {/*      </button>*/}
-            {/*    </Box>*/}
-            {/*  </Flex>*/}
-            {/*</VStack>*/}
-          </GridItem>
-        </Grid>
-        <Box>
-          <NextLink href={`/product/edit/${product.id}`}>Edit Product</NextLink>
-          <Link href="#" onClick={() => setIsOpen(true)}>
-            Delete Product
-          </Link>
-        </Box>
-
-        <AlertDialog
-          isOpen={isOpen}
-          leastDestructiveRef={cancelRef}
-          onClose={onClose}
-        >
-          <AlertDialogOverlay>
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                Delete Product
-              </AlertDialogHeader>
-
-              <AlertDialogBody>
-                Are you sure? You can't undo this action afterwards.
-              </AlertDialogBody>
-
-              <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={onClose}>
-                  Cancel
+              {product.status === "published" ? (
+                <Button
+                  mt="8"
+                  className="snipcart-add-item"
+                  data-item-id={product.id}
+                  data-item-price={product.price}
+                  data-item-url={router.asPath}
+                  data-item-description={product.description}
+                  data-item-image={getMedia(
+                    product.image.formats.thumbnail.url
+                  )}
+                  data-item-name={product.title}
+                  v-bind="customFields"
+                  w={"full"}
+                  size={"md"}
+                  rounded={"none"}
+                  bg={"gray.900"}
+                  color={"white"}
+                  _hover={{ bg: "gray.100", color: "gray.900" }}
+                >
+                  Add to cart
                 </Button>
-                <Button colorScheme="red" onClick={deleteProduct} ml={3}>
-                  Delete
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
+              ) : (
+                <>
+                  <Center mt={"12"}> Coming soon...</Center>
+                  <Button
+                    mt="8"
+                    className="snipcart-add-item"
+                    data-item-id={product.id}
+                    data-item-price={product.price}
+                    data-item-url={router.asPath}
+                    data-item-description={product.description}
+                    data-item-image={getMedia(
+                      product.image.formats.thumbnail.url
+                    )}
+                    data-item-name={product.title}
+                    v-bind="customFields"
+                    w={"full"}
+                    size={"md"}
+                    rounded={"none"}
+                    disabled
+                  >
+                    Add to cart
+                  </Button>
+                </>
+              )}
+            </GridItem>
+          </Grid>
+          {user && (
+            <>
+              <Box>
+                <NextLink href={`/product/edit/${product.id}`}>
+                  Edit Product
+                </NextLink>
+                <Link href="#" onClick={() => setIsOpen(true)}>
+                  Delete Product
+                </Link>
+              </Box>
+
+              <AlertDialog
+                isOpen={isOpen}
+                leastDestructiveRef={cancelRef}
+                onClose={onClose}
+              >
+                <AlertDialogOverlay>
+                  <AlertDialogContent>
+                    <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                      Delete Product
+                    </AlertDialogHeader>
+
+                    <AlertDialogBody>
+                      Are you sure? You can't undo this action afterwards.
+                    </AlertDialogBody>
+
+                    <AlertDialogFooter>
+                      <Button ref={cancelRef} onClick={onClose}>
+                        Cancel
+                      </Button>
+                      <Button colorScheme="red" onClick={deleteProduct} ml={3}>
+                        Delete
+                      </Button>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialogOverlay>
+              </AlertDialog>
+            </>
+          )}
+        </Container>
       </Container>
     </PageLayout>
   )

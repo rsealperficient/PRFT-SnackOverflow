@@ -16,6 +16,8 @@ import {
   Divider,
   HStack,
   useColorModeValue,
+  Center,
+  Spinner,
 } from "@chakra-ui/react"
 import Image from "next/image"
 import PageLayout from "@/components/page-layout"
@@ -25,11 +27,16 @@ import qs from "qs"
 import { useRouter } from "next/router"
 
 import { API_URL } from "@/config/index"
+import React from "react"
 
 function ProductSearchPage({ products }) {
   const router = useRouter()
   if (router.isFallback) {
-    return <div>Loading product...</div>
+    return (
+      <Center h={"100vh"}>
+        <Spinner size="xl" />
+      </Center>
+    )
   }
   return (
     <PageLayout>
@@ -46,12 +53,6 @@ function ProductSearchPage({ products }) {
 export default ProductSearchPage
 
 export async function getServerSideProps({ query: { term } }) {
-  // const query = qs.stringify({
-  //   _where: {
-  //     name_contains: term,
-  //     // _or: [{ name_contains: term }],
-  //   },
-  // })
 
   const query = qs.stringify({
     _where: {

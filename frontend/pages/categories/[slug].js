@@ -1,49 +1,65 @@
 import {
-  SimpleGrid,
-  Box,
   Container,
-  Grid,
-  GridItem,
-  Flex,
-  Spacer,
   Heading,
-  Button,
-  ListIcon,
+  Stack,
+  Flex,
   Text,
   VStack,
-  List,
-  ListItem,
-  Divider,
-  HStack,
-  useColorModeValue,
+  useBreakpointValue,
+  Button,
+  GridItem,
 } from "@chakra-ui/react"
-import Image from "next/image"
 import PageLayout from "@/components/page-layout"
 import { getCategories, getCategory } from "@/utils/api"
-import ProductsList from "@/components/products-list";
-import Pagination from "@/components/pagination";
+import ProductsList from "@/components/products-list"
+import { MdKeyboardArrowLeft } from "react-icons/md"
+import React from "react"
+import {useRouter} from "next/router";
 
-function CategorySingle({ category , page, total}) {
+function CategorySingle({ category, page, total }) {
+  const router = useRouter()
+
   return (
     <PageLayout>
-      <Container maxW={"container.xl"}>
-        <Heading>Category by Products</Heading>
-        <Box>Filter</Box>
-        <Grid templateColumns="repeat(5, 1fr)" gap={4}>
-          <GridItem colSpan={1} bg="tomato">
-            Filter
-          </GridItem>
-          <GridItem colSpan={4} bg="papayawhip">
-            <ProductsList products={category.products} />
-            <Pagination page={page} total={total} />
-          </GridItem>
-        </Grid>
+      <Flex
+        w={"full"}
+        h={"20vh"}
+        bgGradient="linear(to-r, teal.300, cyan.700, purple.500)"
+        backgroundSize={"cover"}
+        backgroundPosition={"center center"}
+      >
+        <VStack
+          w={"full"}
+          justify={"center"}
+          px={useBreakpointValue({ base: 4, md: 8 })}
+          bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
+        >
+          <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
+            <Heading
+              color={"white"}
+              fontWeight={700}
+              lineHeight={1.2}
+              fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+            >
+              {category.name}
+            </Heading>
+          </Stack>
+        </VStack>
+      </Flex>
+
+      <Container maxW={"container.xl"} pt={"8"} pb={"20"}   minH={"calc(100vh - 88px - 117px - 56px )"}>
+        <Button onClick={() => router.back()} variant={"link"} size={"small"}>
+          <MdKeyboardArrowLeft /> Back
+        </Button>
+
+        <ProductsList products={category.products} />
       </Container>
     </PageLayout>
   )
 }
 
 export default CategorySingle
+
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug)
   return { props: { category } }

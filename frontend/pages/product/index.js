@@ -1,33 +1,21 @@
-import {
-  SimpleGrid,
-  Box,
-  Container,
-  Grid,
-  GridItem,
-  Flex,
-  Spacer,
-  Heading,
-  Button,
-  ListIcon,
-  Text,
-  VStack,
-  List,
-  ListItem,
-  Divider,
-  HStack,
-  useColorModeValue,
-} from "@chakra-ui/react"
-import Image from "next/image"
+import { Container, Button } from "@chakra-ui/react"
 import PageLayout from "@/components/page-layout"
-import { getProducts, getProduct } from "@/utils/api"
 import ProductsList from "@/components/products-list"
 import { API_URL, PAGE_SIZE } from "@/config/index"
 import Pagination from "@/components/pagination"
+import { MdKeyboardArrowLeft } from "react-icons/md"
+import React from "react"
+import { useRouter } from "next/router"
 
 function ProductPage({ products, page, total }) {
+  const router = useRouter()
+
   return (
     <PageLayout>
-      <Container maxW={"container.xl"}>
+      <Container maxW={"container.xl"} pt={"8"} pb={"20"}>
+        <Button onClick={() => router.back()} variant={"link"} size={"small"}>
+          <MdKeyboardArrowLeft /> Back
+        </Button>
         <ProductsList products={products} />
         <Pagination page={page} total={total} />
       </Container>

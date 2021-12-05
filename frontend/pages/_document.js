@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
 import { ColorModeScript } from "@chakra-ui/react"
 import React from "react"
-import {SNIPCART_API} from "@/config/index";
+import { SNIPCART_API } from "@/config/index"
 export default class MyDocument extends Document {
   render() {
     return (
@@ -18,8 +18,6 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=optional"
             rel="stylesheet"
           />
-
-
         </Head>
 
         <body>
@@ -28,15 +26,15 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <script
-              async
-              src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"
+            async
+            src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"
           ></script>
           <div
-              hidden
-              id="snipcart"
-              data-config-modal-style="side"
-              data-api-key={SNIPCART_API}
-              // data-config-add-product-behavior="none"
+            hidden
+            id="snipcart"
+            data-config-modal-style="side"
+            data-api-key={SNIPCART_API}
+            // data-config-add-product-behavior="none"
           ></div>
         </body>
       </Html>

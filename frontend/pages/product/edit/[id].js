@@ -7,41 +7,16 @@ import { API_URL } from "@/config/index"
 import {
   Box,
   Container,
-  Grid,
-  GridItem,
-  Flex,
-  Spacer,
   Heading,
   Button,
-  ListIcon,
-  Text,
-  VStack,
-  List,
-  Link,
-  ListItem,
-  Divider,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  HStack,
   Img,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
   SimpleGrid,
-  AlertDialogContent,
-  AlertDialogOverlay,
-  useColorModeValue,
   useToast,
   useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   FormControl,
@@ -49,7 +24,6 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react"
-import {fetchAPI, getProduct} from "@/utils/api";
 
 function EditProductPage({ product }) {
   const toast = useToast()
@@ -57,7 +31,6 @@ function EditProductPage({ product }) {
   const [imagePreview, setImagePreview] = useState(
     product.image ? product.image.formats.thumbnail.url : null
   )
-  const [showImageModal, setShowImageModal] = useState(false)
   const [values, setValues] = useState({
     name: product.name,
     description: product.description,
