@@ -64,19 +64,7 @@ function Header(props) {
           <HStack spacing="24px">
             {user ? (
               <>
-                <NextLink href={"/account/dashboard"}>
-                  <Button
-                    colorScheme={"blue"}
-                    // bg={"blue.400"}
-                    px={6}
-                    variant={"outline"}
-                    // _hover={{
-                    //   bg: "green.500",
-                    // }}
-                  >
-                    My Account
-                  </Button>
-                </NextLink>
+
 
                 <Button
                   colorScheme={"blue"}
@@ -99,12 +87,12 @@ function Header(props) {
               size={"md"}
               mr={4}
               className="snipcart-checkout "
-              variant={"solid"}
+              variant={"ghost"}
               px={6}
               leftIcon={<MdShoppingCart />}
+              borderRadius={"none"}
             >
-              Cart{" "}
-              <Text ml="2" as="span" className="snipcart-items-count"></Text>
+              Cart
             </Button>
           </HStack>
         </Flex>

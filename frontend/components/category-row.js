@@ -32,7 +32,7 @@ const CategoryRow = ({ categories = [] }) => {
       {categories.map((_category) => (
         // <NextLink href={"/account/login"}>Log in</NextLink>
 
-        <GridItem h={"200px"} alignItems={"center"}>
+        <GridItem h={"200px"} alignItems={"center"} key={_category.id}>
           <LinkBox
             h="full"
             as="article"
