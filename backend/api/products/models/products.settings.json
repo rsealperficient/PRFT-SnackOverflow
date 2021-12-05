@@ -50,28 +50,14 @@
     "description": {
       "type": "richtext"
     },
-    "set": {
-      "type": "enumeration",
-      "enum": [
-        "Kaldheim",
-        "Vow"
-      ]
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Creature",
-        "Instant",
-        "Sorcery",
-        "Enchantment",
-        "Land",
-        "Artifact"
-      ]
-    },
     "users_permissions_user": {
       "plugin": "users-permissions",
       "model": "user",
       "via": "products"
+    },
+    "categories": {
+      "via": "products",
+      "collection": "category"
     }
   }
 }
