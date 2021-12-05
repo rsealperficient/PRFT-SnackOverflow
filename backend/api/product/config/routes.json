@@ -5,7 +5,9 @@
       "path": "/products",
       "handler": "product.find",
       "config": {
-        "policies": []
+        "policies": [
+
+        ]
       }
     },
     {
@@ -13,7 +15,9 @@
       "path": "/products/count",
       "handler": "product.count",
       "config": {
-        "policies": []
+        "policies": [
+
+        ]
       }
     },
     {
@@ -21,15 +25,9 @@
       "path": "/products/:slug",
       "handler": "product.findOne",
       "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/products/:id",
-      "handler": "products.findOne",
-      "config": {
-        "policies": []
+        "policies": [
+
+        ]
       }
     },
     {
@@ -37,7 +35,9 @@
       "path": "/products",
       "handler": "product.create",
       "config": {
-        "policies": []
+        "policies": [
+
+        ]
       }
     },
     {
@@ -45,7 +45,9 @@
       "path": "/products/:id",
       "handler": "product.update",
       "config": {
-        "policies": []
+        "policies": [
+
+        ]
       }
     },
     {
@@ -53,7 +55,9 @@
       "path": "/products/:id",
       "handler": "product.delete",
       "config": {
-        "policies": []
+        "policies": [
+
+        ]
       }
     }
   ]

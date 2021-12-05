@@ -207,7 +207,7 @@ module.exports = {
         {
           id: 2,
         },
-       
+
       ],
     },
     {
@@ -329,7 +329,7 @@ module.exports = {
     {
       id: 14,
       title: "Luna Poster",
-      description: "The PHP Framework For Web Artisans",
+      description: "Nec a aptent in fusce a scelerisque hac in interdum mattis gravida dolor commodo turpis suspendisse a cubilia erat felis turpis a dis convallis vestibulum congue nunc ut.",
       price: 13.99,
       slug: "luna2548346-posters",
       status: "published",
