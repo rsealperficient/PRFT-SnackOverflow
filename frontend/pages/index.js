@@ -1,26 +1,30 @@
 import PageLayout from "@/components/page-layout"
-import { Box, Container, Grid, Heading, Flex, GridItem } from "@chakra-ui/react"
+import CategoryRow from "@/components/category-row"
+import {
+  Box,
+  Container,
+  Grid,
+  Heading,
+  Flex,
+  GridItem,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import ProductsList from "@/components/products-list"
-import { getProducts } from "@/utils/api"
+import { getCategories, getCategory, getProducts } from "@/utils/api"
+import Hero from "@/components/hero"
 
-function HomePage({ products }) {
+function HomePage({ products, categories }) {
   return (
     <PageLayout>
-      <Container maxW={"container.xl"}>
-        <Grid templateColumns="repeat(3, 1fr)" gap={2}>
-          <GridItem h="200" colSpan={1} bg="purple.100">
-            All Products
-          </GridItem>
-          <GridItem colSpan={1} bg="purple.100">
-            Sealed
-          </GridItem>{" "}
-          <GridItem colSpan={1} bg="purple.100">
-            Singles
-          </GridItem>
-        </Grid>
-
-
-      </Container>
+      <Hero />
+      <Flex
+        minH={"calc(100vh - 88px - 56px - 300px)"}
+        bg={useColorModeValue("gray.50", "gray.800")}
+      >
+        <Container maxW={"container.xl"}>
+          <CategoryRow categories={categories} />
+        </Container>
+      </Flex>
     </PageLayout>
   )
 }
@@ -29,5 +33,6 @@ export default HomePage
 
 export async function getStaticProps() {
   const products = await getProducts()
-  return { props: { products } }
+  const categories = await getCategories()
+  return { props: { products, categories } }
 }

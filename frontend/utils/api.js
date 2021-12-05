@@ -20,3 +20,12 @@ export async function getProduct(slug) {
   const products = await fetchAPI(`/products?slug=${slug}`)
   return products?.[0]
 }
+
+export async function getCategories() {
+  const categories = await fetchAPI("/categories")
+  return categories
+}
+export async function getCategory(slug) {
+  const categories = await fetchAPI(`/categories?slug=${slug}`)
+  return categories?.[0]
+}

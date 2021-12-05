@@ -46,9 +46,15 @@ function Header(props) {
         />
         <HStack spacing={8} alignItems={"center"}>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            <NextLink href="/">
-              <Heading>TCG Market</Heading>
-            </NextLink>
+            <Box border="4px" p={2} borderColor="gray.900">
+              <Heading
+                size={4}
+                fontWeight="semibold"
+                textTransform={"uppercase"}
+              >
+                <NextLink href="/">Card Market</NextLink>
+              </Heading>
+            </Box>
           </HStack>
         </HStack>
         <Box w="60%">

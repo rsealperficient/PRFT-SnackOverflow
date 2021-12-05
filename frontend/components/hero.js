@@ -13,7 +13,7 @@ function Hero(props) {
     <Flex
       w={"full"}
       h={"300px"}
-      backgroundImage={"/hero_1280x960_wallpaper.jpg"}
+      backgroundImage={"/images/hero.jpg"}
       backgroundSize={"cover"}
       backgroundPosition={"center center"}
     >
@@ -29,28 +29,11 @@ function Hero(props) {
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+            textAlign={"center"}
           >
-            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor
+            Buy and Sell Trading Card Games Online
           </Text>
-          <Stack direction={"row"}>
-            <Button
-              bg={"blue.400"}
-              rounded={"full"}
-              color={"white"}
-              _hover={{ bg: "blue.500" }}
-            >
-              Show me more
-            </Button>
-            <Button
-              bg={"whiteAlpha.300"}
-              rounded={"full"}
-              color={"white"}
-              _hover={{ bg: "whiteAlpha.500" }}
-            >
-              Show me more
-            </Button>
-          </Stack>
+
         </Stack>
       </VStack>
     </Flex>
