@@ -49,6 +49,7 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react"
+import {fetchAPI, getProduct} from "@/utils/api";
 
 function EditProductPage({ product }) {
   const toast = useToast()
@@ -206,12 +207,12 @@ function EditProductPage({ product }) {
   )
 }
 
+
 export async function getServerSideProps({ params: { id } }) {
   const res = await fetch(`${API_URL}/products/${id}`)
   const product = await res.json()
-
   return {
-    props: { product },
+    props: { product }
   }
 }
 export default EditProductPage

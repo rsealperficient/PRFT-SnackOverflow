@@ -1,5 +1,5 @@
 {
-  "name": "tcg-market-backend",
+  "name": "backend",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -11,26 +11,26 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "knex": "0.21.18",
-    "slugify": "^1.6.3",
-    "sqlite3": "5.0.0",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
-    "strapi-connector-bookshelf": "3.6.8",
-    "strapi-plugin-content-manager": "3.6.8",
+    "strapi-utils": "3.6.8",
     "strapi-plugin-content-type-builder": "3.6.8",
-    "strapi-plugin-email": "3.6.8",
-    "strapi-plugin-i18n": "3.6.8",
-    "strapi-plugin-upload": "3.6.8",
+    "strapi-plugin-content-manager": "3.6.8",
     "strapi-plugin-users-permissions": "3.6.8",
-    "strapi-provider-upload-cloudinary": "^3.6.8",
-    "strapi-utils": "3.6.8"
+    "strapi-plugin-email": "3.6.8",
+    "strapi-plugin-upload": "3.6.8",
+    "strapi-plugin-i18n": "3.6.8",
+    "strapi-connector-bookshelf": "3.6.8",
+    "knex": "0.21.18",
+    "sqlite3": "5.0.0"
   },
   "author": {
-    "name": "Edwin Lunandy"
+    "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "188f8f42-9f92-4e8f-95f0-733cce64ed43"
+    "uuid": "2f2e6f25-4eef-4399-b4d3-67bf92709f87",
+    "template": "https://github.com/strapi/strapi-template-ecommerce",
+    "starter": "https://github.com/strapi/strapi-starter-next-ecommerce"
   },
   "engines": {
     "node": ">=10.16.0 <=14.x.x",
