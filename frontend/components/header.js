@@ -1,39 +1,22 @@
-import { React, ReactNode, useEffect, useContext } from "react"
+import { React, useContext } from "react"
 import NextLink from "next/link"
 import SearchBar from "@/components/search-bar"
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  Drawer,
-  Text,
-  DrawerOverlay,
-  DrawerFooter,
-  DrawerBody,
-  DrawerHeader,
-  DrawerContent,
-  DrawerCloseButton,
-  Input,
   useDisclosure,
   useColorModeValue,
-  Stack,
   Heading,
 } from "@chakra-ui/react"
-import AuthContext from "@/context/AuthContext"
+import AppContext from "@/context/app-context"
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons"
-const Links = ["Dashboard", "Projects", "Team"]
 import { MdShoppingCart } from "react-icons/md"
 function Header(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { user, logoutUser } = useContext(AuthContext)
+  const { user, logoutUser } = useContext(AppContext)
   return (
     <Box bg={useColorModeValue("white", "gray.900")} px={4} py={3}>
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
@@ -64,16 +47,10 @@ function Header(props) {
           <HStack spacing="24px">
             {user ? (
               <>
-
-
                 <Button
                   colorScheme={"blue"}
-                  // bg={"blue.400"}
                   px={6}
                   variant={"outline"}
-                  // _hover={{
-                  //   bg: "green.500",
-                  // }}
                   onClick={() => logoutUser()}
                 >
                   Log out

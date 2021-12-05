@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { API_URL, NEXT_URL } from "@/config/index"
 
-const AuthContext = createContext()
+const AppContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null)
@@ -81,12 +81,12 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-      <AuthContext.Provider
+      <AppContext.Provider
           value={{ registerUser, loginUser, logoutUser, user, error }}
       >
         {children}
-      </AuthContext.Provider>
+      </AppContext.Provider>
   )
 }
 
-export default AuthContext
+export default AppContext

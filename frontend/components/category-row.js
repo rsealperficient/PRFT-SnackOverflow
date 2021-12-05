@@ -1,29 +1,6 @@
 import NextLink from "next/link"
-
-import {
-  Box,
-  Flex,
-  Avatar,
-  HStack,
-  IconButton,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  Link,
-  Grid,
-  GridItem,
-  Center,
-  useColorModeValue,
-  Heading,
-  Text,
-  Stack,
-} from "@chakra-ui/react"
+import { Grid, GridItem, Center, Heading } from "@chakra-ui/react"
 import { React } from "react"
-import Image from "next/image"
 import { LinkBox, LinkOverlay } from "@chakra-ui/react"
 
 const CategoryRow = ({ categories = [] }) => {
@@ -62,3 +39,5 @@ const CategoryRow = ({ categories = [] }) => {
 }
 
 export default CategoryRow
+
+

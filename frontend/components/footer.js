@@ -1,11 +1,13 @@
-import NextLink from "next/link"
 import {
   Box,
   Container,
   Stack,
+  Link,
   useColorModeValue,
   Text,
 } from "@chakra-ui/react"
+import { FaGithub } from "react-icons/fa"
+
 function Footer(props) {
   return (
     <Box
@@ -21,8 +23,10 @@ function Footer(props) {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Stack direction={"row"} spacing={6}>
-          <NextLink href={"/"}>About</NextLink>
+        <Stack direction={"row"} spacing={4}>
+          <Link href={"https://github.com/rsealperficient/PRFT-SnackOverflow"}>
+            <FaGithub />
+          </Link>
         </Stack>
         <Text>© 2021 Made with Next.js and Chakra UI.</Text>
       </Container>

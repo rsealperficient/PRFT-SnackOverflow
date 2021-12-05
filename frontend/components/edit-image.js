@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-
 import { API_URL } from "@/config/index"
-import { FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Input } from "@chakra-ui/react"
 
 function EditImage({ productId, imageUploaded }) {
   const [image, setImage] = useState(null)
@@ -27,13 +26,10 @@ function EditImage({ productId, imageUploaded }) {
     setImage(e.target.files[0])
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleFileChange} type="file" />
-
-        <Input type="submit" value="Upload" />
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input onChange={handleFileChange} type="file" />
+      <Input type="submit" value="Upload" />
+    </form>
   )
 }
 

@@ -1,6 +1,6 @@
 import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react"
 import theme from "../theme"
-import { AuthProvider } from "@/context/AuthContext"
+import { AuthProvider } from "@/context/app-context"
 function MyApp({ Component, pageProps }) {
     return (
         <ChakraProvider resetCSS theme={theme}>

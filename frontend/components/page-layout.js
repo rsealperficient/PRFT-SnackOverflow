@@ -4,9 +4,8 @@ import Head from "next/head"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Box } from "@chakra-ui/react"
-import { SITE_NAME, SITE_DESCRIPTION,SNIPCART_API } from "@/config/index"
+import { SITE_NAME, SITE_DESCRIPTION } from "@/config/index"
 function PageLayout({ title, description, children }) {
-  const router = useRouter()
 
   return (
     <>
@@ -19,7 +18,6 @@ function PageLayout({ title, description, children }) {
       <Header />
       <Box bg={"gray.100"}>{children}</Box>
       <Footer />
-
     </>
   )
 }

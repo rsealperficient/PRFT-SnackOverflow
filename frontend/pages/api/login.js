@@ -22,10 +22,10 @@ export default async (req, res) => {
         "Set-Cookie",
         cookie.serialize("token", data.jwt, {
           httpOnly: true,
-          secure: process.env.NODE_ENV !== "development",
-          maxAge: 24 * 7 * 60 * 60, // 1 week
           sameSite: "strict",
+          maxAge: 24 * 7 * 60 * 60, // 1 week
           path: "/",
+          secure: process.env.NODE_ENV !== "development",
         })
       )
       res.status(200).json({ user: data.user })
@@ -34,7 +34,6 @@ export default async (req, res) => {
         .status(data.statusCode)
         .json({ message: data.message[0].messages[0].message })
     }
-    //res.status(200).json({})
   } else {
     res.setHeader("Allow", ["POST"])
     res.status(405).json({ message: `Method ${req.method} not allowed` })

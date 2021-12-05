@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import PageLayout from "@/components/page-layout"
-import AuthContext from "@/context/AuthContext"
+import AppContext from "@/context/app-context"
 import {
   Box,
   Button,
@@ -19,7 +19,7 @@ import NextLink from "next/link"
 
 function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
-  const { registerUser, error } = useContext(AuthContext)
+  const { registerUser, error } = useContext(AppContext)
   const [username, setUserName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")

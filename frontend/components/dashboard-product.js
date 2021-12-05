@@ -1,14 +1,14 @@
 import NextLink from "next/link"
 import { FaPencilAlt, FaTimes } from "react-icons/fa"
 
-export default function DashboardProduct({ product, handleDelete }) {
+function DashboardProduct(props) {
   return (
     <div>
-      <h4>
+      <Heading>
         <NextLink href={`/events/${product.slug}`}>
           <a>{product.name}</a>
         </NextLink>
-      </h4>
+      </Heading>
       <NextLink href={`/events/edit/${product.id}`}>
         <a>
           <FaPencilAlt /> <span>Edit Event</span>
@@ -20,3 +20,5 @@ export default function DashboardProduct({ product, handleDelete }) {
     </div>
   )
 }
+
+export default DashboardProduct
