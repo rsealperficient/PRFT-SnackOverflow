@@ -52,7 +52,7 @@ function Header(props) {
                 fontWeight="semibold"
                 textTransform={"uppercase"}
               >
-                <NextLink href="/">Card Market</NextLink>
+                <NextLink href="/">Art Market</NextLink>
               </Heading>
             </Box>
           </HStack>

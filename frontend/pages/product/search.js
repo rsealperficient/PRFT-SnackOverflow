@@ -56,10 +56,9 @@ export async function getServerSideProps({ query: { term } }) {
   const query = qs.stringify({
     _where: {
       _or: [
-        { name_contains: term },
-        { set_contains: term },
+        { title_contains: term },
         { description_contains: term },
-        { rarity_contains: term },
+        { slug_contains: term },
       ],
     },
   })

@@ -111,7 +111,7 @@ function ProductSingle({ product }) {
                   ? product.image.formats.small.url
                   : "https://via.placeholder.com/15"
               }
-              data-item-name={product.name}
+              data-item-name={product.title}
               v-bind="customFields"
             >
               Add to cart
