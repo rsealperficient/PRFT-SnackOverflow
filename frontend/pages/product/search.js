@@ -1,36 +1,22 @@
 import {
-  SimpleGrid,
-  Box,
   Container,
-  Grid,
-  GridItem,
   Flex,
-  Spacer,
   Heading,
   Button,
-  ListIcon,
-  Text,
   VStack,
-  List,
-  ListItem,
-  Divider,
-  HStack,
-  useColorModeValue,
   Center,
   Spinner,
-  useBreakpointValue,
   Stack,
 } from "@chakra-ui/react"
-import Image from "next/image"
 import PageLayout from "@/components/page-layout"
-import { getProducts, getProduct } from "@/utils/api"
+import { getProductsByQuery } from "@/utils/api"
 import ProductsList from "@/components/products-list"
 import qs from "qs"
 import { useRouter } from "next/router"
 
-import { API_URL } from "@/config/index"
 import React from "react"
 import { MdKeyboardArrowLeft } from "react-icons/md"
+import { API_URL } from "@/config/index"
 
 function ProductSearchPage({ products }) {
   const router = useRouter()
@@ -53,7 +39,7 @@ function ProductSearchPage({ products }) {
         <VStack
           w={"full"}
           justify={"center"}
-          px={useBreakpointValue({ base: 4, md: 8 })}
+          px={"8"}
           bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
         >
           <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
@@ -61,7 +47,7 @@ function ProductSearchPage({ products }) {
               color={"white"}
               fontWeight={700}
               lineHeight={1.2}
-              fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+              fontSize={"4xl"}
             >
               Search Results for {router.query.term}
             </Heading>
@@ -98,6 +84,7 @@ export async function getServerSideProps({ query: { term } }) {
   })
 
   const res = await fetch(`${API_URL}/products?${query}`)
+
   const products = await res.json()
 
   return {

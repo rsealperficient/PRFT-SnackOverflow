@@ -23,7 +23,9 @@ function SearchBar(props) {
             value={term}
             onChange={(e) => setTerm(e.target.value)}
           />
-          <InputRightElement children={<MdSearch color="green.500" />} />
+          <InputRightElement>
+            <MdSearch color="green.500" />
+          </InputRightElement>
         </InputGroup>
       </form>
     </div>

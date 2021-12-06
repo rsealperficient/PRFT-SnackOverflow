@@ -3,18 +3,16 @@ import {
   Heading,
   Stack,
   Flex,
-  Text,
   VStack,
   useBreakpointValue,
   Button,
-  GridItem,
 } from "@chakra-ui/react"
 import PageLayout from "@/components/page-layout"
 import { getCategories, getCategory } from "@/utils/api"
 import ProductsList from "@/components/products-list"
 import { MdKeyboardArrowLeft } from "react-icons/md"
 import React from "react"
-import {useRouter} from "next/router";
+import { useRouter } from "next/router"
 
 function CategorySingle({ category, page, total }) {
   const router = useRouter()
@@ -47,7 +45,12 @@ function CategorySingle({ category, page, total }) {
         </VStack>
       </Flex>
 
-      <Container maxW={"container.xl"} pt={"8"} pb={"20"}   minH={"calc(100vh - 88px - 117px - 56px )"}>
+      <Container
+        maxW={"container.xl"}
+        pt={"8"}
+        pb={"20"}
+        minH={"calc(100vh - 88px - 117px - 56px )"}
+      >
         <Button onClick={() => router.back()} variant={"link"} size={"small"}>
           <MdKeyboardArrowLeft /> Back
         </Button>
@@ -73,6 +76,6 @@ export async function getStaticPaths() {
         params: { slug: _category.slug },
       }
     }),
-    fallback: true,
+    fallback: false,
   }
 }

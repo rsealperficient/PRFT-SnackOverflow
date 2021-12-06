@@ -165,13 +165,11 @@ function EditProductPage({ product }) {
               <ModalHeader>Upload Image</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-
                 <EditImage
                   productId={product.id}
                   imageUploaded={imageUploaded}
                 />
               </ModalBody>
-
             </ModalContent>
           </Modal>
         </SimpleGrid>
@@ -180,12 +178,11 @@ function EditProductPage({ product }) {
   )
 }
 
-
 export async function getServerSideProps({ params: { id } }) {
   const res = await fetch(`${API_URL}/products/${id}`)
   const product = await res.json()
   return {
-    props: { product }
+    props: { product },
   }
 }
 export default EditProductPage

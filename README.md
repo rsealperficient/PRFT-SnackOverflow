@@ -7,9 +7,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 Next.js starter for creating simple Ecommerce site with Strapi.
 This project was made to showcase ecommerce platform made with Next.js and Nextjs Serverless functions.  
+
+
+
+![image](https://drive.google.com/uc?export=view&id=103NYjzcaTTVh-kDRekUvGvWHHiP1fRxq)
+
+![image](https://drive.google.com/uc?export=view&id=1-gex2UViHYF1P-d-UinTHrJSX9qOHwMm)
+
+![image](https://drive.google.com/uc?export=view&id=1-ilVzCycM5UIHgIQ4wh92NSZHVsTnb8T)
+
 
 
 ### Built With

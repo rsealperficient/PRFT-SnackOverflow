@@ -7,8 +7,6 @@ const CategoryRow = ({ categories = [] }) => {
   return (
     <Grid my="8" templateColumns="repeat(3, 1fr)" gap={8}>
       {categories.map((_category) => (
-        // <NextLink href={"/account/login"}>Log in</NextLink>
-
         <GridItem h={"200px"} alignItems={"center"} key={_category.id}>
           <LinkBox
             h="full"
@@ -39,5 +37,3 @@ const CategoryRow = ({ categories = [] }) => {
 }
 
 export default CategoryRow
-
-

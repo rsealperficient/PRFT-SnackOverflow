@@ -34,7 +34,6 @@ export default class MyDocument extends Document {
             id="snipcart"
             data-config-modal-style="side"
             data-api-key={SNIPCART_API}
-            // data-config-add-product-behavior="none"
           ></div>
         </body>
       </Html>

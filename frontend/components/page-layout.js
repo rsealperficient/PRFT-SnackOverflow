@@ -1,12 +1,10 @@
 import React from "react"
-import { useRouter } from "next/router"
 import Head from "next/head"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Box } from "@chakra-ui/react"
 import { SITE_NAME, SITE_DESCRIPTION } from "@/config/index"
 function PageLayout({ title, description, children }) {
-
   return (
     <>
       <Head>

@@ -4,7 +4,6 @@ import {
   Flex,
   Button,
   Text,
-  Heading,
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react"
@@ -53,7 +52,6 @@ function Hero(props) {
         </Stack>
       </VStack>
     </Flex>
-
   )
 }
 

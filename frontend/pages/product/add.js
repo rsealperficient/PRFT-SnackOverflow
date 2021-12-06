@@ -52,7 +52,6 @@ function AddProductPage({ products }) {
         position: "top",
         isClosable: true,
       })
-
     } else {
       const product = await res.json()
       router.push(`/product/${product.slug}`)

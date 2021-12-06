@@ -21,6 +21,11 @@ export async function getProduct(slug) {
   return products?.[0]
 }
 
+export async function getProductsByQuery(query) {
+  const products = await fetchAPI(`/products?${query}`)
+  return products
+}
+
 export async function getCategories() {
   const categories = await fetchAPI("/categories")
   return categories
