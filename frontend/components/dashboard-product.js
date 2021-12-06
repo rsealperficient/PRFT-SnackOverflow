@@ -1,6 +1,6 @@
 import NextLink from "next/link"
 import { FaPencilAlt, FaTimes } from "react-icons/fa"
-
+import Heading from "@chakra-ui/react"
 function DashboardProduct(props) {
   return (
     <div>

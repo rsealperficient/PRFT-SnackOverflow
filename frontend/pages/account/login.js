@@ -81,7 +81,7 @@ function LoginPage() {
                 </FormControl>
                 <Stack spacing={10} mt={3}>
                   <Text>
-                    Don't have account?{" "}
+                    Don&apos;t have account?{" "}
                     <NextLink href={"/account/register"}>
                       <Link color={"blue.400"}>Sign up</Link>
                     </NextLink>

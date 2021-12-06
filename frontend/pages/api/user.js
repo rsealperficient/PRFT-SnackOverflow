@@ -1,7 +1,7 @@
 import { API_URL } from "@/config/index"
 import cookie from "cookie"
-
-export default async (req, res) => {
+import Logout from "./logout"
+async function User({ req, res }) {
   if (req.method === "GET") {
     //get cookie stored in header
     if (!req.header.cookie) {
@@ -28,3 +28,4 @@ export default async (req, res) => {
     res.status(405).json({ message: `Method ${req.method}  not allowed` })
   }
 }
+export default User

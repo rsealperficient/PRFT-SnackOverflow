@@ -5,14 +5,12 @@ import {
   Link,
   GridItem,
   Center,
-  useColorModeValue,
   Heading,
   Text,
   Stack,
 } from "@chakra-ui/react"
 import NextImage from "@/utils/image"
 import NextLink from "next/link"
-
 
 function ProductsList({ products }) {
   return (
@@ -34,7 +32,7 @@ function ProductsList({ products }) {
                   maxW={"330px"}
                   w={"full"}
                   minH={"340px"}
-                  bg={useColorModeValue("white", "gray.800")}
+                  bg={"white"}
                   boxShadow={"2xl"}
                   rounded={"lg"}
                   pos={"relative"}
