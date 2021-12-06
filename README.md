@@ -11,7 +11,7 @@
 Next.js starter for creating simple Ecommerce site with Strapi.
 This project was made to showcase ecommerce platform made with Next.js and Nextjs Serverless functions.  
 
-
+[Demo](https://nextjs-strapi-ecommerce-delta.vercel.app/)
 
 ![image](https://drive.google.com/uc?export=view&id=103NYjzcaTTVh-kDRekUvGvWHHiP1fRxq)
 
